@@ -5,4 +5,4 @@
 	sed 's/auth required pam_succeed_if.so user \!\= root quiet_success/#auth required pam_succeed_if.so user \!\= root quiet_success/g' -i /etc/pam.d/lightdm-autologin
 } &> /dev/null
 echo "Well Done!"
-exit 1
+exit 0
