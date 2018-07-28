@@ -7,6 +7,7 @@ fi
 url=$1
 threads=$2
 counter=0
+
 while [[ true ]]; do
 
 	function request {
