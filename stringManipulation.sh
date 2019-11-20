@@ -17,3 +17,15 @@ function substr {
 	done
 	echo $output
 }
+
+function strpos {
+	local haystack=$1
+	local needle=$2
+	for ((i=0; $i<${#haystack}; i++ )); do
+		if [[ $(substr "$haystack" $i $(($i+${#needle}))) == $needle ]]; then
+			echo $i; exit
+		fi
+	done
+	echo 0
+}
+
