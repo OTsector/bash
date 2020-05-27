@@ -15,13 +15,10 @@ function permute {
 			if [ $((($i >> $j) & 1)) -eq 1 ]; then
 				upper="${input:$j:1}"; upper=${upper^^}
 				combination="${combination:0:$j}$upper${combination:$j+1}"
-					
 			fi
 		done	
 		printf "$combination "
 	done
-
 }
 
 permute "abc"
-
