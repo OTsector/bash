@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ $# -lt 2 ]; then
+	echo "use: "$0" [key] [text]"; exit 1
+fi
+
 function ascii2dec {
 	printf '%d' "'$1"
 }
