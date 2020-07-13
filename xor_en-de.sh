@@ -11,15 +11,15 @@ function hex2ascii {
 	done
 }
 function xoren {
-# source: https://stackoverflow.com/questions/2960136/bitwise-xor-a-string-in-bash#37313472
-local key=$1 str=$2
-local ptr out val1 val2
-for ((ptr=0; ptr < ${#str}; ptr++)); do
-	val1=$(ascii2dec "${str:$ptr:1}")
-	val2=$(ascii2dec "${key:$(( ptr % ${#key} )):1}")
-	out+=$(printf '%02x' "$(( val1 ^ val2 ))")
-done
-printf '%s\n' "$out"
+	# source: https://stackoverflow.com/questions/2960136/bitwise-xor-a-string-in-bash#37313472
+	local key=$1 str=$2
+	local ptr out val1 val2
+	for ((ptr=0; ptr < ${#str}; ptr++)); do
+		val1=$(ascii2dec "${str:$ptr:1}")
+		val2=$(ascii2dec "${key:$(( ptr % ${#key} )):1}")
+		out+=$(printf '%02x' "$(( val1 ^ val2 ))")
+	done
+	printf '%s\n' "$out"
 }
 function xorde {
 	xoren "$1" "$2"
