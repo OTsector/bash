@@ -6,7 +6,7 @@ function upload {
   fi
 	local file="$1"
 	local size=$(wc -c < "$file")
-	for((i=0; i<=5; i++)); do
+	for i in {1..5}; do
 		data=$(
 			pc curl -sLgk 'https://file.io/' \
 				-H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0.1) Gecko/20100101 Firefox/76.0.1' \
