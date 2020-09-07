@@ -2,13 +2,13 @@
 
 function rand {
 	[ $# -lt 2 ] && { echo "use: [string] [length]";return 1; }
-	local s=$2
-	local a="$1"
-	local b=
-	for((i=0;i<$s;i++));do
-		b+=${a:$[$RANDOM % ${#a}]:1}
+	local length=$2
+	local string="$1"
+	local output=
+	for((i=0;i<$length;i++));do
+		output+=${string:$[$RANDOM % ${#string}]:1}
 	done
-	echo $b
+	echo $output
 }
 
 rand "$1" $2
