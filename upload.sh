@@ -23,5 +23,4 @@ function upload {
 	sed 's/.*"link":"//g;s/".*//g' <<< $data
 }
 	
-	upload "$1"
-	
+upload "$1"
