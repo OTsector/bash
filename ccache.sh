@@ -11,7 +11,15 @@ if ! [ -f /usr/bin/updatedb ] || ! [ -f /usr/bin/locate ] || ! [ -f /usr/bin/bc 
 fi
 
 # https://github.com/OTsector/bash/blob/master/rand.sh
-function rand { local s=$2;local a="$1";local b=;for((i=0;i<$s;i++));do b+=${a:$[$RANDOM % ${#a}]:1};done;echo $b;}
+function rand {
+	local length=$2
+	local string="$1"
+	local output=
+	for((i=0;i<$length;i++));do
+		output+=${string:$[$RANDOM % ${#string}]:1}
+	done
+	echo $output
+}
 
 temp="/tmp/."$(rand 0123456789abcdefghjklmnopqrstuvwxyz 10)
 
