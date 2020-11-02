@@ -27,7 +27,7 @@ echo "INFO: updating database"
 updatedb
 
 echo "INFO: searching files and directories"
-locate cache|grep 'cache/'|sed 's/cache\/.*/cache\//g;/\/usr\/share\//d'|sort|uniq > $temp
+locate cache|grep 'cache/'|sed 's/cache\/.*/cache\//g;/\/usr\/share\//d;/\/opt\//d'|sort|uniq > $temp
 
 while read path; do rm -rf "$path"*; done < $temp
 
