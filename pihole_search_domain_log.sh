@@ -9,7 +9,7 @@ fi
 domain="$1"
 
 echo "DATE, DOMAIN, IP, MAC, VENDOR"
-sqlite3 "$pihole_FTL" <<< "SELECT client, domain, timestamp FROM queries WHERE domain == '"$domain"';"|sort -u \
+sqlite3 "$pihole_FTL" <<< "SELECT client, domain, timestamp FROM queries WHERE domain == '"$domain"' ORDER BY timestamp ASC;" \
 	|awk -F '|' '{print $1" "$2" "$3}'|while read ip domain timestamp; do
 		echo $ip $domain $timestamp
 	done \
@@ -18,11 +18,11 @@ sqlite3 "$pihole_FTL" <<< "SELECT client, domain, timestamp FROM queries WHERE d
 				|while read id; do
 					echo $id $ip $domain $timestamp
 				done
-		done|sort -u \
+		done \
 		|while read id ip domain timestamp; do
 			sqlite3 "$pihole_FTL" <<< "SELECT hwaddr, macVendor FROM network WHERE id == '"$id"';" \
 				|sed 's/\ /\\ /g'|awk -F '|' '{print $1" "$2}'|while read mac vendor; do
 					echo "\"$(date -d @$timestamp)\", \"$domain\", \"$ip\", \"$mac\", \"$vendor\""
 				done
-		done|sort -u
+		done
 
