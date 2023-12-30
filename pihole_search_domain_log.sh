@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 pihole_FTL='/etc/pihole/pihole-FTL.db'
 
 if [ $# -lt 1 ]; then
@@ -8,7 +7,6 @@ if [ $# -lt 1 ]; then
 fi
 
 domain="$1"
-
 
 echo "DATE, DOMAIN, IP, MAC, VENDOR"
 sqlite3 "$pihole_FTL" <<< "SELECT client, domain, timestamp FROM queries WHERE domain == '"$domain"';"|sort -u \
