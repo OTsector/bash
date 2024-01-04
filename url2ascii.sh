@@ -1,3 +1,4 @@
+#!/bin/bash
 
 function url2ascii {
 	local text="$*"
