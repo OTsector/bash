@@ -17,4 +17,10 @@ function url2ascii {
 	printf "${out}"
 }
 
+# easy way
+function url2ascii {
+  local input="${1//+/ }"
+  printf '%b' "${input//%/\\x}"
+}
+
 url2ascii "$@"
