@@ -17,7 +17,7 @@ function ascii2hex {
 	for((i=0; i<${#buf}; i+=2)); do
 		out+="\x${buf:$i:2}"
 	done
-	echo $out
+	echo "$out"
 }
 
 ascii2hex "$@"
