@@ -19,7 +19,6 @@ function ascii2url {
 			buf=$(printf '%02X' $((int)))
 			for((j=0; j<${#buf}; j+=2)); do
 				out+="%${buf:$j:2}"
-			echo buf $buf char: $char
 			done
 		elif ((int >= 0x800 && int <= 0xFFFF)); then
 			buf=$(printf '%02X%02X%02X' $((0xE0 | ((int >> 12) & 0x0F))) $((0x80 | ((int >> 6) & 0x3F))) $((0x80 | (int & 0x3F))))
